@@ -1,0 +1,9 @@
+CREATE DATABASE IF NOT EXISTS pwatarea3 CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE pwatarea3;
+CREATE TABLE IF NOT EXISTS visitas (id TINYINT PRIMARY KEY, total INT NOT NULL DEFAULT 0);
+INSERT INTO visitas (id,total) VALUES (1,0) ON DUPLICATE KEY UPDATE id=id;
+CREATE TABLE IF NOT EXISTS mensajes (id INT AUTO_INCREMENT PRIMARY KEY, nombre VARCHAR(100) NOT NULL, correo VARCHAR(150) NOT NULL, mensaje TEXT NOT NULL, creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
+CREATE TABLE IF NOT EXISTS usuarios (id INT AUTO_INCREMENT PRIMARY KEY, nombre VARCHAR(100) NOT NULL, correo VARCHAR(150) NOT NULL UNIQUE, password VARCHAR(255) NOT NULL, creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
+-- Usuario de demostración: demo@pwatarea3.com / Demo1234
+INSERT INTO usuarios (nombre,correo,password) VALUES ('Usuario Demo','demo@pwatarea3.com','$2y$12$ZxjknahoP/bnHsWpwdjbSetjRRPznzeoaUSQk.RNvV/0n6tmLin6C')
+ON DUPLICATE KEY UPDATE correo=correo;

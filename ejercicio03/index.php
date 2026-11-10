@@ -1,0 +1,5 @@
+<?php
+require_once __DIR__.'/../config/db.php';
+$pdo->exec('UPDATE visitas SET total=total+1 WHERE id=1');
+$total=(int)$pdo->query('SELECT total FROM visitas WHERE id=1')->fetchColumn();
+?><!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ejercicio 03 | Visitas</title><link rel="stylesheet" href="../assets/css/style.css"></head><body><header class="topbar"><a class="brand" href="../index.php"><span class="brand-mark">P</span> PWATAREA3</a><a class="back" href="../index.php">← Volver al inicio</a></header><main class="page-wrap"><span class="eyebrow">EJERCICIO 03</span><section class="panel"><h1>Contador de visitas</h1><p class="muted">El contador se incrementa cada vez que se carga esta página. MySQL conserva el total entre visitas y PHP realiza la actualización.</p><div class="stat"><?=number_format($total)?></div><strong>visitas registradas</strong><p class="small">Tabla utilizada: visitas · Registro único: id 1.</p></section></main></body></html>
